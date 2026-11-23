@@ -1,0 +1,177 @@
+GF2-1:
+  policy: pi0.5
+  setup: 2
+GF2-2:
+  policy: pi0.5
+  setup: 2
+GF3-1:
+  policy: pi0.5
+  setup: 2
+GF3-2:
+  policy: pi0.5
+  setup: 2
+R-A1:
+  policy: pi0.5
+  setup: 2
+R-A2:
+  policy: pi0.5
+  setup: 2
+R-C1:
+  policy: pi0.5
+  setup: 2
+R-C2:
+  policy: pi0.5
+  setup: 2
+R-C3:
+  policy: pi0.5
+  setup: 2
+R-S1:
+  policy: pi0.5
+  setup: 2
+R-S2:
+  policy: pi0.5
+  setup: 2
+R-S3:
+  policy: pi0.5
+  setup: 2
+T01:
+  policy: pi0.5
+  setup: 2
+T02:
+  policy: pi0.5
+  setup: 2
+T04:
+  policy: pi0.5
+  setup: 2
+T05:
+  policy: pi0.5
+  setup: 2
+T06:
+  policy: pi0.5
+  setup: 2
+T07:
+  policy: pi0.5
+  setup: 2
+T08:
+  policy: pi0.5
+  setup: 2
+T09:
+  policy: pi0.5
+  setup: 2
+T10:
+  policy: pi0.5
+  setup: 2
+T11:
+  policy: pi0.5
+  setup: 2
+T15:
+  policy: pi0.5
+  setup: 2
+T16:
+  policy: pi0.5
+  setup: 2
+T17:
+  policy: pi0.5
+  setup: 2
+T18:
+  policy: pi0.5
+  setup: 2
+T21:
+  policy: pi0.5
+  setup: 2
+T22:
+  policy: pi0.5
+  setup: 2
+T23:
+  policy: pi0.5
+  setup: 2
+T24:
+  policy: pi0.5
+  setup: 2
+T25:
+  policy: pi0.5
+  setup: 2
+T26:
+  policy: pi0.5
+  setup: 2
+T28:
+  policy: pi0.5
+  setup: 2
+T30:
+  policy: pi0.5
+  setup: 2
+T32:
+  policy: pi0.5
+  setup: 2
+T33:
+  policy: pi0.5
+  setup: 2
+T35:
+  policy: pi0.5
+  setup: 2
+T36:
+  policy: pi0.5
+  setup: 2
+T38:
+  policy: pi0.5
+  setup: 2
+T40:
+  policy: pi0.5
+  setup: 2
+T41:
+  policy: pi0.5
+  setup: 2
+T42:
+  policy: pi0.5
+  setup: 2
+T43:
+  policy: pi0.5
+  setup: 2
+T44:
+  policy: pi0.5
+  setup: 2
+T45:
+  policy: pi0.5
+  setup: 2
+T46:
+  policy: pi0.5
+  setup: 2
+T47:
+  policy: pi0.5
+  setup: 2
+T48:
+  policy: pi0.5
+  setup: 2
+T49:
+  policy: pi0.5
+  setup: 2
+T50:
+  policy: pi0.5
+  setup: 2
+iw_h1_02:
+  policy: pi0.5
+  setup: 2
+iw_h2_02:
+  policy: pi0.5
+  setup: 2
+iw_h3_03:
+  policy: pi0.5
+  setup: 2
+iw_h4_02:
+  policy: pi0.5
+  setup: 2
+iw_h5_02:
+  policy: pi0.5
+  setup: 2
+iw_m1_01:
+  policy: pi0.5
+  setup: 2
+iw_m2_01:
+  policy: pi0.5
+  setup: 2
+iw_m3_01:
+  policy: pi0.5
+  setup: 2
+iw_m4_02:
+  policy: pi0.5
+  setup: 2

@@ -1,0 +1,24 @@
+policy:
+  type: worldharness
+  backend: openai_responses
+  model: gpt-6-luna
+  base_url: https://api.openai.com/v1
+  api_key_env: OPENAI_API_KEY
+  reasoning_effort: medium
+  max_output_tokens: 16384
+  model_timeout: 1800
+  history_policy: current_sensors_last_result_notes
+  max_perception_rounds: 4
+  service_tier: default
+  max_input_tokens: 272000
+  input_token_counting: provider_usage
+  input_overflow_policy: slide_complete_groups
+  text_verbosity: low
+  prompt_layout: compact
+  gateway_transport: responses
+  cache_strategy: stable_prefix_v1
+  prompt_cache_options:
+    ttl: 30m
+    mode: implicit
+  measurement_decimals: 3
+  camera_policy: default

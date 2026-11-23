@@ -1,0 +1,177 @@
+GF2-1:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+GF2-2:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+GF3-1:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+GF3-2:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+R-A1:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+R-A2:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+R-C1:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+R-C2:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+R-C3:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+R-S1:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+R-S2:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+R-S3:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T01:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T02:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T04:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T05:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T06:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T07:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T08:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T09:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T10:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T11:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T15:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T16:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T17:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T18:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T21:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T22:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T23:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T24:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T25:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T26:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T28:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T30:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T32:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T33:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T35:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T36:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T38:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T40:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T41:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T42:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T43:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T44:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T45:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T46:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T47:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T48:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T49:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+T50:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_h1_02:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_h2_02:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_h3_03:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_h4_02:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_h5_02:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_m1_01:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_m2_01:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_m3_01:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1
+iw_m4_02:
+  policy: GR00T-N1.5-RoboCasa365
+  setup: 1

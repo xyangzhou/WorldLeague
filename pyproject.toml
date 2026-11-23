@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "worldleague"
+version = "0.4.2"
+description = "WorldLeague physical agency benchmark and WorldHarness evaluation"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "PyYAML>=6", "pydantic>=2", "jsonschema>=4"]
+
+[project.optional-dependencies]
+vlm = ["worldharness>=0.2.1"]
+simulation = ["opencv-python-headless", "Pillow", "scipy", "requests", "websockets>=13", "msgpack"]
+[project.scripts]
+worldleague = "worldleague.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+
+exclude = ["worldleague.third_party*"]
+
+[tool.setuptools.package-data]
+worldleague = ["third_party/esi/**/*.py", "third_party/esi/NOTICE"]
+
+[tool.setuptools.data-files]
+"share/worldleague/configs/vlm" = ["configs/vlm/*.yaml"]
+"share/worldleague/configs/vlm/legacy" = ["configs/vlm/legacy/*.yaml"]
+"share/worldleague/configs" = ["configs/*.json", "configs/*.yaml"]
+"share/worldleague/configs/continuous" = ["configs/continuous/*.json"]
+"share/worldleague/configs/continuous/models" = ["configs/continuous/models/*.yaml"]
+"share/worldleague/configs/continuous/robots" = ["configs/continuous/robots/*.yaml"]
+"share/worldleague/configs/continuous/policies" = ["configs/continuous/policies/*.yaml"]

@@ -1,0 +1,74 @@
+type: continuous
+backend: websocket
+timeout_s: 180
+observation_format: r1pro_joint23
+image_size: 224
+reset_mode: none
+action_key: actions
+max_chunk_steps: 32
+execution_horizon: 20
+action_processing:
+  config:
+    type: conditional_resample
+    source_steps: 26
+    execution_steps: 20
+    interpolation: cubic
+    base_velocity_indices:
+    - 0
+    - 1
+    - 2
+    base_velocity_scale:
+      numerator: 25
+      denominator: 19
+    gripper_indices:
+    - 14
+    - 22
+    gripper_variation_threshold: 0.2
+    output_dtype: float32
+    gripper_correction:
+      enabled: true
+      table: pi0.5_gripper_table.json
+      task_name_source: prompt
+      stage: null
+      closed_threshold: -0.98
+      min_closed_fraction: 0.002
+      open_command: 1.0
+      width_scale: 20.0
+      width_offset: -1.0
+  gripper_table:
+    path: pi0.5_gripper_table.json
+profile:
+  config:
+    action_processing:
+      type: conditional_resample
+      source_steps: 26
+      execution_steps: 20
+      interpolation: cubic
+      base_velocity_indices:
+      - 0
+      - 1
+      - 2
+      base_velocity_scale:
+        numerator: 25
+        denominator: 19
+      gripper_indices:
+      - 14
+      - 22
+      gripper_variation_threshold: 0.2
+      output_dtype: float32
+      gripper_correction:
+        enabled: true
+        table: pi0.5_gripper_table.json
+        task_name_source: prompt
+        stage: null
+        closed_threshold: -0.98
+        min_closed_fraction: 0.002
+        open_command: 1.0
+        width_scale: 20.0
+        width_offset: -1.0
+    alignment:
+      camera_calibration:
+        render_updates_per_attempt: 4
+        max_attempts: 3
+        mount_position_tolerance_m: 1.0e-06
+        mount_quaternion_abs_dot_tolerance: 1.0e-06

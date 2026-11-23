@@ -1,0 +1,114 @@
+model: pandaomron
+name: robot_panda
+asset_path: robot://pandaomron/native/pandaomron.usda
+source_manifest: robot://pandaomron/source/manifest.json
+eval:
+  camera_sensor_names:
+    agentview_left: robot_panda:mobilebase0_support:Camera:0
+    agentview_right: robot_panda:mobilebase0_support:Camera:1
+    wrist: robot_panda:robot0_right_hand:Camera:0
+  primary_camera_role: agentview_left
+  wrist_camera_role: wrist
+  arm_names:
+  - right
+  working_arm: right
+  camera_settings:
+    agentview_left:
+      image_height: 256
+      image_width: 256
+      horizontal_aperture: 20.955
+      focal_length: 18.14756233630291
+    agentview_right:
+      image_height: 256
+      image_width: 256
+      horizontal_aperture: 20.955
+      focal_length: 18.14756233630291
+    wrist:
+      image_height: 256
+      image_width: 256
+      horizontal_aperture: 20.955
+      focal_length: 25.294922599764103
+action_normalize: false
+self_collisions: true
+obs_modalities:
+- proprio
+- rgb
+proprio_obs:
+- joint_qpos
+- joint_qvel
+grasping_mode: physical
+sensor_config:
+  VisionSensor:
+    sensor_kwargs:
+      image_height: 256
+      image_width: 256
+controller_config:
+  base:
+    name: JointController
+    motor_type: velocity
+    command_input_limits: null
+    command_output_limits: null
+    isaac_kd:
+    - 1000.0
+    - 1000.0
+    - 1500.0
+    use_impedances: false
+  trunk:
+    name: PandaOmronTorsoController
+    motor_type: position
+    command_input_limits:
+    - - -1
+    - - 1
+    command_output_limits:
+    - - -0.05
+    - - 0.05
+    use_delta_commands: true
+    use_impedances: true
+    use_gravity_compensation: true
+    use_cc_compensation: true
+    pos_kp: 2000
+    pos_damping_ratio: 1
+  arm_right:
+    name: PandaOmronOSCController
+    mode: pose_delta_ori
+    command_input_limits:
+    - - -1
+      - -1
+      - -1
+      - -1
+      - -1
+      - -1
+    - - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+    command_output_limits:
+    - - -0.05
+      - -0.05
+      - -0.05
+      - -0.5
+      - -0.5
+      - -0.5
+    - - 0.05
+      - 0.05
+      - 0.05
+      - 0.5
+      - 0.5
+      - 0.5
+    kp: 150
+    damping_ratio: 1
+    kp_null: 10
+    decouple_pos_ori: true
+    use_gravity_compensation: true
+    use_cc_compensation: true
+  gripper_right:
+    name: JointController
+    motor_type: position
+    command_input_limits: null
+    command_output_limits: null
+    use_delta_commands: false
+    use_impedances: false
+    isaac_kp: 1000.0
+    isaac_kd: 100.0

@@ -1,0 +1,19 @@
+policy:
+  type: worldharness
+  backend: openai_chat_completions
+  provider: compatible
+  model: deepseek/deepseek-v4.1-flash-1017
+  base_url: https://ai-gateway.vercel.sh/v1
+  api_key_env: AI_GATEWAY_API_KEY
+  reasoning_effort: low
+  max_output_tokens: 384000
+  model_timeout: 1800
+  history_policy: current_sensors_last_result_notes
+  max_perception_rounds: 4
+environment:
+  keep_simulator: true
+evaluation:
+  run_mode: benchmark
+  max_steps: 2
+  world_observation_log: true
+  terminal_qa: false

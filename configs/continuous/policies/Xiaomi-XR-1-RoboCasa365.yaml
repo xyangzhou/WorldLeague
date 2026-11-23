@@ -1,0 +1,50 @@
+type: continuous
+backend: websocket
+timeout_s: 600
+observation_format: xr1_robocasa365
+image_size: 256
+reset_mode: none
+action_key: actions
+max_chunk_steps: 16
+execution_horizon: 16
+action_processing:
+  config:
+    type: xr1_robocasa365
+    source_steps: 16
+    execution_steps: 16
+    history_length: 4
+    history_interval_steps: 2
+    reference_control_hz: 20
+    native_state_dim: 14
+    padded_state_dim: 60
+    crop_ratio: 0.95
+    checkpoint:
+      id: XiaomiRobotics/Xiaomi-Robotics-1-RoboCasa365
+      revision: 3a6d0293bfa90759d34a7fc48c2c62413cd7bcf4
+    reasoning_effort: low
+    native_reasoning_mode: fixed_no_cot_template
+    supported_effort_api: false
+profile:
+  config:
+    action_processing:
+      type: xr1_robocasa365
+      source_steps: 16
+      execution_steps: 16
+      history_length: 4
+      history_interval_steps: 2
+      reference_control_hz: 20
+      native_state_dim: 14
+      padded_state_dim: 60
+      crop_ratio: 0.95
+      checkpoint:
+        id: XiaomiRobotics/Xiaomi-Robotics-1-RoboCasa365
+        revision: 3a6d0293bfa90759d34a7fc48c2c62413cd7bcf4
+      reasoning_effort: low
+      native_reasoning_mode: fixed_no_cot_template
+      supported_effort_api: false
+    alignment:
+      camera_calibration:
+        max_attempts: 6
+        render_updates_per_attempt: 4
+        mount_position_tolerance_m: 1.0e-05
+        mount_quaternion_abs_dot_tolerance: 1.0e-06

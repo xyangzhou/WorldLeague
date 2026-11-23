@@ -1,0 +1,50 @@
+type: continuous
+backend: websocket
+timeout_s: 1800
+observation_format: xr1_robocasa365
+image_size: 256
+reset_mode: none
+action_key: actions
+max_chunk_steps: 32
+execution_horizon: 32
+action_processing:
+  config:
+    type: xr1_robocasa365
+    source_steps: 32
+    execution_steps: 32
+    history_length: 1
+    history_interval_steps: 1
+    reference_control_hz: 20
+    native_state_dim: 14
+    model_state_dim: 19
+    model_action_dim: 15
+    checkpoint:
+      id: OpenWAM/OpenWAM-Alpha-Sim-RoboCasa365
+      revision: ff070f244047280b5213a078a0fcebe6bb8c0169
+    reasoning_effort: low
+    native_reasoning_mode: not_applicable_diffusion_policy
+    supported_effort_api: false
+profile:
+  config:
+    action_processing:
+      type: xr1_robocasa365
+      source_steps: 32
+      execution_steps: 32
+      history_length: 1
+      history_interval_steps: 1
+      reference_control_hz: 20
+      native_state_dim: 14
+      model_state_dim: 19
+      model_action_dim: 15
+      checkpoint:
+        id: OpenWAM/OpenWAM-Alpha-Sim-RoboCasa365
+        revision: ff070f244047280b5213a078a0fcebe6bb8c0169
+      reasoning_effort: low
+      native_reasoning_mode: not_applicable_diffusion_policy
+      supported_effort_api: false
+    alignment:
+      camera_calibration:
+        max_attempts: 6
+        render_updates_per_attempt: 4
+        mount_position_tolerance_m: 1.0e-05
+        mount_quaternion_abs_dot_tolerance: 1.0e-06

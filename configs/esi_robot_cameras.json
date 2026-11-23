@@ -1,0 +1,77 @@
+{
+  "render_size": 1024,
+  "antialiasing": "TAA",
+  "mount_source": "Galaxea R1 hardware guide layout; approximate base_link extrinsics, not calibrated hardware values",
+  "chassis_cameras": [
+    {
+      "name": "chassis_front_left_rgb",
+      "position_m": [
+        0.36,
+        0.15,
+        0.24
+      ],
+      "yaw_deg": 15.0,
+      "focal_length": 6.3
+    },
+    {
+      "name": "chassis_front_right_rgb",
+      "position_m": [
+        0.36,
+        -0.15,
+        0.24
+      ],
+      "yaw_deg": -15.0,
+      "focal_length": 6.3
+    },
+    {
+      "name": "chassis_left_rgb",
+      "position_m": [
+        -0.02,
+        0.36,
+        0.24
+      ],
+      "yaw_deg": 90.0,
+      "focal_length": 6.3
+    },
+    {
+      "name": "chassis_right_rgb",
+      "position_m": [
+        -0.02,
+        -0.36,
+        0.24
+      ],
+      "yaw_deg": -90.0,
+      "focal_length": 6.3
+    },
+    {
+      "name": "chassis_rear_rgb",
+      "position_m": [
+        -0.36,
+        0.0,
+        0.24
+      ],
+      "yaw_deg": 180.0,
+      "focal_length": 6.3
+    }
+  ],
+  "render_resolution": [
+    1024,
+    576
+  ],
+  "optics_source": "Galaxea R1 published camera FOV; equivalent pinhole approximation, not factory RGB/depth calibration or lens distortion",
+  "optics_source_url": "https://github.com/userguide-galaxea/product_user_guide/blob/galaxea/main/docs/en/Guide/R1/R1_Autonomous_Navigation_System_Usage_Tutorial.md",
+  "camera_fov_deg": {
+    "head": [
+      110.0,
+      70.0
+    ],
+    "wrist": [
+      87.0,
+      58.0
+    ],
+    "chassis": [
+      118.0,
+      62.0
+    ]
+  }
+}

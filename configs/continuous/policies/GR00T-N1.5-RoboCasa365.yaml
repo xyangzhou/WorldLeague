@@ -1,0 +1,52 @@
+type: continuous
+backend: websocket
+timeout_s: 600
+observation_format: xr1_robocasa365
+image_size: 256
+reset_mode: behavior
+action_key: actions
+max_chunk_steps: 16
+execution_horizon: 16
+action_processing:
+  config:
+    type: xr1_robocasa365
+    source_steps: 16
+    execution_steps: 16
+    history_length: 1
+    history_interval_steps: 1
+    reference_control_hz: 20
+    native_state_dim: 14
+    padded_state_dim: 64
+    crop_ratio: 0.95
+    checkpoint:
+      id: robocasa/robocasa365_checkpoints
+      revision: c484448aba1a9b60a04c9b0ca117241518ea69f3
+      subdirectory: gr00t_n1-5/multitask_learning/checkpoint-120000
+    reasoning_effort: low
+    native_reasoning_mode: direct_action_policy_no_reasoning_api
+    supported_effort_api: false
+profile:
+  config:
+    action_processing:
+      type: xr1_robocasa365
+      source_steps: 16
+      execution_steps: 16
+      history_length: 1
+      history_interval_steps: 1
+      reference_control_hz: 20
+      native_state_dim: 14
+      padded_state_dim: 64
+      crop_ratio: 0.95
+      checkpoint:
+        id: robocasa/robocasa365_checkpoints
+        revision: c484448aba1a9b60a04c9b0ca117241518ea69f3
+        subdirectory: gr00t_n1-5/multitask_learning/checkpoint-120000
+      reasoning_effort: low
+      native_reasoning_mode: direct_action_policy_no_reasoning_api
+      supported_effort_api: false
+    alignment:
+      camera_calibration:
+        max_attempts: 6
+        render_updates_per_attempt: 4
+        mount_position_tolerance_m: 1.0e-05
+        mount_quaternion_abs_dot_tolerance: 1.0e-06

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf6eb">
+  <script>
+    const systemDarkMode = matchMedia("(prefers-color-scheme: dark)");
+    const themeStorageKey = "worldleague-theme";
+    let savedTheme;
+    try { savedTheme = localStorage.getItem(themeStorageKey); } catch { /* Storage is optional. */ }
+    function applyTheme() {
+      const linkedTheme = new URLSearchParams(location.search).get("theme");
+      const preference = [linkedTheme, savedTheme].find(value => value === "light-gold" || value === "black-gold");
+      const theme = preference ?? (systemDarkMode.matches ? "black-gold" : "light-gold");
+      document.documentElement.dataset.theme = theme;
+      document.querySelector('meta[name="theme-color"]').content = theme === "black-gold" ? "#0c0d0e" : "#faf6eb";
+    }
+    applyTheme();
+  </script>
+  <meta name="description" content="WorldLeague compares Embodied AI systems on 60 simulated robot tasks by measuring progress toward each task’s physical goal from the robot’s trajectory.">
+  <title>WorldLeague · Benchmarking Physical Agency</title>
+  <link rel="icon" href="assets/site/figures/WebLogo.svg" type="image/svg+xml" sizes="any">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WorldLeague · Benchmarking Physical Agency">
+  <meta property="og:url" content="https://xyangzhou.github.io/WorldLeague/">
+  <meta property="og:image" content="https://xyangzhou.github.io/WorldLeague/assets/site/figures/WebLogo.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="WorldLeague logo">
+  <meta name="twitter:card" content="summary">
+  <link rel="preload" href="assets/site/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/site/site.css">
+  <script src="assets/site/site.js" defer></script>
+</head>
+<body id="top">
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0">
+    <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"/></symbol>
+    <symbol id="icon-vlm" viewBox="0 0 24 24"><path d="M2.5 12s3.8-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.8 6.5-9.5 6.5S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+    <symbol id="icon-vla" viewBox="0 0 24 24"><path d="M5 4v8l4 4h6l4-4V4M8 4v6l3 3h2l3-3V4M12 16v5M8 21h8"/></symbol>
+    <symbol id="icon-wam" viewBox="0 0 24 24"><path d="m12 2.8 8.5 4.8v8.8L12 21.2l-8.5-4.8V7.6Zm0 9.4 8.3-4.5M12 12.2 3.7 7.7M12 12.2V21"/></symbol>
+  </svg>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav-line">
+      <a class="brand" href="#top"><img src="assets/site/figures/WebLogo.svg" width="30" height="30" alt="">WorldLeague</a>
+      <nav class="section-nav" id="section-nav" aria-label="Page sections">
+        <a href="#trajectories">Video</a><a href="#leaderboard">Leaderboard</a><a href="#benchmark">Tasks</a><a href="#harness">Harness</a><a href="#evaluate">Evaluate</a><a href="#cite">Cite</a>
+      </nav>
+      <div class="nav-tools">
+        <a href="https://github.com/xyangzhou/WorldLeague" aria-label="WorldLeague on GitHub" title="WorldLeague on GitHub">
+          <svg aria-hidden="true" width="23" height="23"><use href="#icon-github"/></svg>
+        </a>
+        <a href="https://huggingface.co/datasets/xyangzhou/WorldLeague" aria-label="WorldLeague benchmark on Hugging Face" title="WorldLeague benchmark on Hugging Face">
+          <img src="assets/site/figures/huggingface.svg" width="27" height="25" alt="">
+        </a>
+        <button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden>
+          <svg class="moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 13.2A8.5 8.5 0 0 1 10.8 3.5a8.5 8.5 0 1 0 9.7 9.7Z"/></svg>
+          <svg class="sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="wordmark-stage">
+          <svg id="worldleague-title" viewBox="0 0 1230 226" width="1230" height="226" role="img" aria-label="WorldLeague">
+            <defs>
+              <image id="title-print" href="assets/site/figures/FullTitle.svg#light-letters" width="1230" height="226"/>
+              <clipPath id="title-w"><rect x="12" y="8" width="216" height="210"/></clipPath>
+              <clipPath id="title-rld"><rect x="416" y="8" width="220" height="210"/></clipPath>
+              <clipPath id="title-eague"><rect x="804" y="8" width="415" height="212"/></clipPath>
+              <clipPath id="after-title-ring"><rect x="410" width="820" height="226"/></clipPath>
+              <clipPath id="before-title-initial"><rect width="665" height="226"/></clipPath>
+            </defs>
+            <g class="title-word title-w"><use href="#title-print" clip-path="url(#title-w)"/></g>
+            <g clip-path="url(#after-title-ring)"><g clip-path="url(#before-title-initial)">
+              <g class="title-word title-rld"><use href="#title-print" clip-path="url(#title-rld)"/></g>
+            </g></g>
+            <g class="title-word title-eague"><use href="#title-print" clip-path="url(#title-eague)"/></g>
+            <g class="title-ring">
+              <image class="from-emblem" href="assets/site/figures/FormalLogo.svg#emblem-ring" x="224" y="14" width="186" height="186"/>
+              <image class="from-title" href="assets/site/figures/FullTitle.svg#ring-layer" width="1230" height="226"/>
+            </g>
+            <g class="title-emblem-core">
+              <image class="from-emblem" href="assets/site/figures/FormalLogo.svg#emblem-robot" width="868" height="868"/>
+              <svg x="339" y="185" width="347" height="416" viewBox="710 61 86 104" preserveAspectRatio="none">
+                <image id="title-robot" class="from-title" href="assets/site/figures/FullTitle.svg#light-robot" width="1230" height="226"/>
+              </svg>
+            </g>
+            <g class="title-initial">
+              <path class="title-l" fill="#CDA027" d="M790.183 178H665.471V168.575C671.608 168.575 676.138 168.064 679.06 167.041C681.982 166.018 683.882 164.046 684.759 161.123C685.635 158.201 686.074 153.89 686.074 148.192V64.6849C686.074 59.1324 685.635 54.8219 684.759 51.7534C684.028 48.6849 682.202 46.5662 679.279 45.3973C676.357 44.0822 671.827 43.4247 665.69 43.4247V34H740.211V43.4247C733.928 43.4247 729.252 44.0822 726.183 45.3973C723.115 46.5662 721.069 48.6849 720.046 51.7534C719.17 54.8219 718.731 59.2055 718.731 64.9041V151.699C718.731 157.105 719.827 160.612 722.019 162.219C724.357 163.826 728.74 164.63 735.17 164.63H748.539C754.676 164.63 759.718 164.119 763.663 163.096C767.754 162.073 771.042 160.32 773.526 157.836C776.156 155.352 778.348 151.991 780.101 147.753C781.855 143.516 783.535 138.183 785.142 131.753H796.32L790.183 178Z"/>
+            </g>
+          </svg>
+          <button class="title-replay" type="button" aria-label="Replay WorldLeague title animation" aria-controls="worldleague-title" hidden></button>
+        </div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title">Benchmarking <em>Physical Agency</em></h1>
+            <div class="tracks" aria-label="Benchmark tracks">
+              <a href="#worldseek"><span class="track-dot seek"></span>WorldSeek</a>
+              <a href="#worldshape"><span class="track-dot shape"></span>WorldShape</a>
+              <a href="#worldshift"><span class="track-dot shift"></span>WorldShift</a>
+            </div>
+            <p class="intro">What range of physical goals can today’s Embodied AI systems achieve autonomously? WorldLeague compares them on 60 simulated robot tasks by measuring progress toward each task’s physical goal from the robot’s trajectory.</p>
+            <p class="authors"><a href="mailto:xinyangzhou@u.nus.edu">Xinyang Zhou</a>, <a href="mailto:liqi@u.nus.edu">Qi Li</a>, <a href="mailto:xinchao@nus.edu.sg">Xinchao Wang</a><sup>†</sup></p>
+            <p class="affiliation"><span><a href="https://sites.google.com/view/xml-nus">xML Lab</a> · National University of Singapore</span> <span>† Corresponding author</span></p>
+            <div class="actions">
+              <a class="button primary" href="#leaderboard">LeaderBoard</a>
+              <a class="button" href="https://github.com/xyangzhou/WorldLeague"><svg aria-hidden="true" width="17" height="17"><use href="#icon-github"/></svg>Code</a>
+              <a class="button" href="https://github.com/xyangzhou/WorldHarness"><svg aria-hidden="true" width="17" height="17"><use href="#icon-github"/></svg>WorldHarness</a>
+              <a class="button" href="https://huggingface.co/datasets/xyangzhou/WorldLeague"><img src="assets/site/figures/huggingface.svg" width="19" height="18" alt="">Benchmark</a>
+            </div>
+          </div>
+          <aside class="board panel" aria-labelledby="board-title">
+            <div class="board-heading"><h2 id="board-title">Leading Embodied AI systems</h2></div>
+            <table class="leaders" aria-labelledby="board-title">
+              <thead><tr><th scope="col">Rank</th><th scope="col">Model</th><th scope="col" class="numeric" aria-sort="descending"><button type="button" data-leader-metric="0" title="Rank by Interactive Score">Score</button></th><th scope="col" class="numeric"><button type="button" data-leader-metric="1" title="Rank by physical success">Success</button></th></tr></thead>
+              <tbody id="leading-systems"></tbody>
+            </table>
+            <div class="board-foot"><span id="leaders-order" aria-live="polite">Ranked by Interactive Score</span><a href="#leaderboard">Full leaderboard</a></div>
+          </aside>
+        </div>
+        <section class="section" id="trajectories">
+          <header class="section-head"><h2>Demo video</h2></header>
+          <video class="demo-player" src="assets/media/worldleague-demo.mp4" poster="assets/media/worldleague-title-poster.jpg"
+                 width="1280" height="720" controls playsinline preload="none" aria-label="WorldLeague benchmark demo">
+            <a href="assets/media/worldleague-demo.mp4">Watch the full WorldLeague demo (2:10)</a>
+          </video>
+        </section>
+        <section class="key-results" id="findings" aria-label="Experimental findings">
+          <article>
+            <p class="finding-value"><span>3</span> <small>leaders across 6 capabilities</small></p>
+            <details class="finding-info" name="finding-info"><summary aria-label="About capability leaders"></summary><div>Interactive Score across all 13 models, on a shared 0–50 scale. Colored dots mark the leaders. Sol and Astra tie in constraint management. <a href="#leaderboard">Explore the leaderboard</a>.</div></details>
+            <h2>Different capabilities have different leaders</h2>
+            <div class="finding-plot domain-plot">
+              <div class="plot-key"><span class="fable">Fable</span><span class="sol">Sol</span><span class="astra">Astra</span></div>
+              <div id="domain-strips"></div>
+              <noscript>Fable leads navigation, grounding, geometry and memory. Sol leads physics and ties Astra on constraints.</noscript>
+            </div>
+          </article>
+          <article>
+            <p class="finding-value"><span>8.5%</span> <small>physical success <span>Mean QA 73.3/100</span></small></p>
+            <details class="finding-info" name="finding-info"><summary aria-label="About QA and physical success"></summary><div>Each VLM ran the same 60 tasks. Terminal QA scores its answers about each episode. Physical success requires the full goal and all constraints to hold. The models achieved the goal in 41 of 480 episodes. In 249 episodes they answered every question correctly and earned zero Interactive Score.</div></details>
+            <h2>Physical goals often go unmet even with perfect answers</h2>
+            <div class="finding-plot qa-comparison">
+              <table aria-label="Physical success rate and mean terminal QA score by VLM">
+                <thead><tr><th scope="col">VLM</th><th scope="col">Physical success</th><th scope="col">QA /100</th></tr></thead>
+                <tbody id="qa-outcomes"></tbody>
+              </table>
+              <noscript>Across the eight VLMs, mean QA scores ranged from 63.33 to 84.44 out of 100 and physical success rates ranged from 1.67% to 21.67%.</noscript>
+            </div>
+          </article>
+          <article>
+            <p class="finding-value"><span>1/38</span> <small>deliveries met the full goal</small></p>
+            <details class="finding-info" name="finding-info"><summary aria-label="About mirror-guided rearrangement"></summary><div>Across 16 of the 59 shared tasks, at least one model made progress and none met the full goal. Each square here is one mirror-guided rearrangement attempt. The object reached its destination in 38 of 39 attempts. Only Fable on R-S1 also achieved the requested spatial relation and left the object stable after release.</div></details>
+            <h2>Successful actions can still leave the physical goal unmet</h2>
+            <div class="finding-plot mirror-plot">
+              <div class="plot-key"><span class="arrived">Arrived only</span><span class="placed">Arrangement held</span><span class="missed">Missed</span></div>
+              <div class="mirror-row" role="img" aria-label="VLM: 24 of 24 reached the destination; 1 met the full placement goal." title="VLM: 24 of 24 reached the destination; 1 met the full placement goal."><span>VLM</span><span aria-hidden="true" class="episode-marks"><i class="placed"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i></span></div>
+              <div class="mirror-row" role="img" aria-label="VLA: 8 of 9 reached the destination; 0 met the full placement goal." title="VLA: 8 of 9 reached the destination; 0 met the full placement goal."><span>VLA</span><span aria-hidden="true" class="episode-marks"><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="missed"></i></span></div>
+              <div class="mirror-row" role="img" aria-label="WAM: 6 of 6 reached the destination; 0 met the full placement goal." title="WAM: 6 of 6 reached the destination; 0 met the full placement goal."><span>WAM</span><span aria-hidden="true" class="episode-marks"><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i><i class="arrived"></i></span></div>
+            </div>
+          </article>
+          <article>
+            <p class="finding-value"><small>Fable earned</small> <span>4.5×</span> <small>Qwen’s score</small></p>
+            <details class="finding-info" name="finding-info"><summary aria-label="About time, tokens and score"></summary><div>Fable and Qwen both averaged about 51 minutes per task. Fable earned an Interactive Score of 28.58 using 3.07M tokens per task. Qwen earned 6.31 using 6.47M. The gold line connects the Pareto frontier for the selected resource. Time is available for all 13 models and token counts for the eight VLMs.</div></details>
+            <h2>Similar runtimes can yield very different physical progress</h2>
+            <div class="finding-plot efficiency-plot">
+              <div class="efficiency-controls"><span>Score</span><span class="pareto-key">Pareto<span class="sr-only"> frontier</span></span><div role="group" aria-label="Horizontal axis, mean per task">
+                <button type="button" data-resource="minutes" aria-pressed="true">Minutes</button><button type="button" data-resource="tokens" aria-pressed="false">Tokens (M)</button>
+              </div></div>
+              <div id="efficiency-scatter"></div>
+              <output class="point-readout" hidden></output>
+              <noscript>Fable and Qwen averaged 51 minutes per task, with Interactive Scores of 28.58 and 6.31.</noscript>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <section class="wrap section" id="leaderboard">
+      <header class="section-head standings-head"><h2>Leaderboard</h2>
+        <p>Select an Embodied AI system to see its Physical Agency Profile. Each dimension pairs mean Interactive Score with physical success rate.</p></header>
+      <div class="ranking">
+        <div class="controls">
+          <fieldset class="family-chips"><legend class="sr-only">Model family</legend>
+            <label><input type="radio" name="family" value="" checked><span>All</span></label>
+            <label><input type="radio" name="family" value="VLM"><span>VLM</span></label>
+            <label><input type="radio" name="family" value="VLA"><span>VLA</span></label>
+            <label><input type="radio" name="family" value="WAM"><span>WAM</span></label>
+          </fieldset>
+          <label class="group-toggle"><input type="checkbox" id="grouped" checked><span id="view-label">Grouped view</span></label>
+          <label class="search-box"><span class="sr-only">Find an Embodied AI system</span><input type="search" id="search" placeholder="Find a model" autocomplete="off"></label>
+        </div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Embodied AI system rankings">
+          <table id="results">
+            <thead><tr>
+              <th scope="col" class="pos">Rank</th><th scope="col">Embodied AI system</th>
+              <th scope="col" class="score-cell" aria-sort="descending"><button type="button" data-rank-by="score" aria-label="Interactive Score"><span class="metric-prefix">Interactive </span>Score</button></th>
+              <th scope="col" class="spark-cell">
+                <select id="dimension" aria-label="By domain — choose a domain to rank">
+                  <option value="overall">By domain</option>
+                  <optgroup label="WorldSeek"><option>Navigation</option><option>Grounding</option></optgroup>
+                  <optgroup label="WorldShape"><option>Geometry</option><option>Physics</option></optgroup>
+                  <optgroup label="WorldShift"><option>Memory</option><option>Constraints</option></optgroup>
+                </select>
+              </th>
+              <th scope="col" class="success-cell"><button type="button" data-rank-by="success" aria-label="Physical success"><span class="metric-prefix">Physical </span>success</button></th>
+            </tr></thead>
+            <tbody>
+              <tr data-dimensions="[[46.33,20.0],[36.27,29.41],[23.53,17.65],[0.0,0.0],[45.83,37.5],[16.67,16.67]]" data-family="VLM" data-tasks="60"><td class="pos">1</td><th scope="row"><span class="model-name">Claude Fable 5.2</span><small>VLM · 60 tasks</small></th><td class="score-cell">28.58</td><td class="spark-cell"></td><td class="success-cell">21.67%</td></tr>
+              <tr data-dimensions="[[14.0,0.0],[19.61,11.76],[18.63,11.76],[14.29,14.29],[27.08,12.5],[50.0,50.0]]" data-family="VLM" data-tasks="60"><td class="pos">2</td><th scope="row"><span class="model-name">GPT-6.1-Sol</span><small>VLM · 60 tasks</small></th><td class="score-cell">22.28</td><td class="spark-cell"></td><td class="success-cell">15.00%</td></tr>
+              <tr data-dimensions="[[17.33,0.0],[19.61,11.76],[15.69,11.76],[0.0,0.0],[27.08,12.5],[50.0,50.0]]" data-family="VLM" data-tasks="60"><td class="pos">3</td><th scope="row"><span class="model-name">GPT-6-Astra</span><small>VLM · 60 tasks</small></th><td class="score-cell">20.06</td><td class="spark-cell"></td><td class="success-cell">13.33%</td></tr>
+              <tr data-dimensions="[[15.67,0.0],[11.76,5.88],[13.73,11.76],[0.0,0.0],[12.5,12.5],[16.67,16.67]]" data-family="VLM" data-tasks="60"><td class="pos">4</td><th scope="row"><span class="model-name">DeepSeek-V4.1-Flash</span><small>VLM · 60 tasks</small></th><td class="score-cell">11.86</td><td class="spark-cell"></td><td class="success-cell">8.33%</td></tr>
+              <tr data-dimensions="[[9.0,0.0],[13.73,5.88],[7.84,5.88],[0.0,0.0],[16.67,0.0],[0.0,0.0]]" data-family="VLM" data-tasks="60"><td class="pos">5</td><th scope="row"><span class="model-name">Kimi-K3.1-Pro</span><small>VLM · 60 tasks</small></th><td class="score-cell">9.08</td><td class="spark-cell"></td><td class="success-cell">3.33%</td></tr>
+              <tr data-dimensions="[[10.33,0.0],[17.65,11.76],[4.17,0.0],[0.0,0.0],[12.5,12.5],[0.0,0.0]]" data-family="VLA" data-tasks="59"><td class="pos">6</td><th scope="row"><span class="model-name">GR00T-N1.5</span><small>VLA · 59 tasks</small></th><td class="score-cell">8.79</td><td class="spark-cell"></td><td class="success-cell">5.08%</td></tr>
+              <tr data-dimensions="[[9.0,0.0],[15.69,11.76],[2.08,0.0],[0.0,0.0],[16.67,12.5],[0.0,0.0]]" data-family="VLA" data-tasks="59"><td class="pos">7</td><th scope="row"><span class="model-name">π0.5 (R1Pro SFT)</span><small>VLA · 59 tasks</small></th><td class="score-cell">8.11</td><td class="spark-cell"></td><td class="success-cell">5.08%</td></tr>
+              <tr data-dimensions="[[13.0,0.0],[11.76,5.88],[2.08,0.0],[0.0,0.0],[12.5,12.5],[0.0,0.0]]" data-family="WAM" data-tasks="59"><td class="pos">8</td><th scope="row"><span class="model-name">Awomo-0.5I</span><small>WAM · 59 tasks</small></th><td class="score-cell">6.75</td><td class="spark-cell"></td><td class="success-cell">3.39%</td></tr>
+              <tr data-dimensions="[[9.0,0.0],[5.88,0.0],[7.84,5.88],[0.0,0.0],[12.5,12.5],[0.0,0.0]]" data-family="VLM" data-tasks="60"><td class="pos">9</td><th scope="row"><span class="model-name">Qwen3.8-27B</span><small>VLM · 60 tasks</small></th><td class="score-cell">6.31</td><td class="spark-cell"></td><td class="success-cell">3.33%</td></tr>
+              <tr data-dimensions="[[9.0,0.0],[8.82,0.0],[7.84,5.88],[0.0,0.0],[0.0,0.0],[0.0,0.0]]" data-family="VLM" data-tasks="60"><td class="pos">10</td><th scope="row"><span class="model-name">Gemini-Decision-1</span><small>VLM · 60 tasks</small></th><td class="score-cell">5.47</td><td class="spark-cell"></td><td class="success-cell">1.67%</td></tr>
+              <tr data-dimensions="[[9.0,0.0],[5.88,0.0],[7.84,5.88],[0.0,0.0],[0.0,0.0],[0.0,0.0]]" data-family="VLM" data-tasks="60"><td class="pos">11</td><th scope="row"><span class="model-name">Jev-1.14.0</span><small>VLM · 60 tasks</small></th><td class="score-cell">4.64</td><td class="spark-cell"></td><td class="success-cell">1.67%</td></tr>
+              <tr data-dimensions="[[11.67,0.0],[5.88,0.0],[4.17,0.0],[0.0,0.0],[0.0,0.0],[0.0,0.0]]" data-family="WAM" data-tasks="59"><td class="pos">12</td><th scope="row"><span class="model-name">OpenWAM-Alpha</span><small>WAM · 59 tasks</small></th><td class="score-cell">3.81</td><td class="spark-cell"></td><td class="success-cell">0.00%</td></tr>
+              <tr data-dimensions="[[0.0,0.0],[5.88,0.0],[4.17,0.0],[0.0,0.0],[0.0,0.0],[0.0,0.0]]" data-family="VLA" data-tasks="59"><td class="pos">13</td><th scope="row"><span class="model-name">Xiaomi XR-1</span><small>VLA · 59 tasks</small></th><td class="score-cell">2.82</td><td class="spark-cell"></td><td class="success-cell">0.00%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="empty" hidden>No matching Embodied AI systems. Clear the search or choose another family.</p>
+        <div id="domain-tip" role="tooltip" hidden></div>
+        <div class="table-foot"><span class="profile-key">Select a bar to rank by domain. <span><i class="seek"></i>WorldSeek</span> <span><i class="shape"></i>WorldShape</span> <span><i class="shift"></i>WorldShift</span></span><button type="button" id="download">Download results (JSON)</button></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="benchmark">
+      <header class="section-head"><p class="eyebrow">WorldLeague Benchmark</p><h2>Physical goals and task demands</h2><p>Robots explore scenes to gather evidence in WorldSeek, rearrange objects in WorldShape, and adapt to changes in WorldShift.</p></header>
+      <div class="track-cards">
+        <article id="worldseek" class="track-card">
+          <h3><span class="track-dot seek"></span>WorldSeek</h3>
+          <ul>
+            <li>Where the robot goes determines what it can <strong>reach</strong> and what it can <strong>see</strong>.</li>
+            <li>In a WorldSeek task, the robot may need to
+              <ul>
+                <li>plan routes to destinations or viewpoints</li>
+                <li>gather evidence to identify a target</li>
+              </ul>
+            </li>
+          </ul>
+          <small>22 tasks · Navigation &amp; Grounding</small>
+        </article>
+        <article id="worldshape" class="track-card">
+          <h3><span class="track-dot shape"></span>WorldShape</h3>
+          <ul>
+            <li>How the robot reshapes its surroundings determines what it can <strong>build</strong> and what will <strong>hold</strong> after it lets go.</li>
+            <li>In a WorldShape task, the robot may need to
+              <ul>
+                <li>arrange objects in a required spatial relation</li>
+                <li>reason about motion, contact, and support</li>
+              </ul>
+            </li>
+          </ul>
+          <small>24 tasks · Geometry &amp; Physics</small>
+        </article>
+        <article id="worldshift" class="track-card">
+          <h3><span class="track-dot shift"></span>WorldShift</h3>
+          <ul>
+            <li>What the robot sees and remembers determines which changes it can <strong>recognize</strong> and how it can <strong>adapt</strong> its plans.</li>
+            <li>In a WorldShift task, the robot may need to
+              <ul>
+                <li>interpret changes or requests using earlier observations</li>
+                <li>maintain or restore required conditions</li>
+              </ul>
+            </li>
+          </ul>
+          <small>14 tasks · Memory &amp; Constraints</small>
+        </article>
+      </div>
+      <figure class="paper-figure"><a href="assets/site/figures/IntroFig.svg" aria-label="Open the full task overview figure"><img loading="lazy" src="assets/site/figures/IntroFig.svg" width="1686" height="956" alt="Example tasks across six dimensions in WorldSeek (blue, right), WorldShape (green, left), and WorldShift (red, below)."></a></figure>
+      <div class="scoring"><h3>Scoring physical goals</h3><p>For each task, the robot’s trajectory shows which goal requirements it satisfies and whether it completes the task. We compute the <strong>Interactive Score</strong> as the mean credit across goal items, scaled to 100. <strong>Physical success</strong> requires satisfying the full goal and all task constraints.</p></div>
+    </section>
+
+    <section class="wrap section" id="harness">
+      <header class="section-head"><p class="eyebrow">The interface</p><h2>WorldHarness</h2></header>
+      <div class="harness-grid">
+        <div><h3>Decision-preserving action abstraction</h3><p>WorldHarness implements this abstraction on R1 by adapting Show-Harness. Given the public goal, camera observations, and retained history, the vision-language model (VLM) selects a base, arm, trunk, or gripper command. The controller executes the motion and returns feedback, which the VLM can use to revise its next command.</p>
+          <p>Vision-language-action models (VLAs) and world-action models (WAMs) use their native controls. All three model families share the task goals, constraints, and physical scoring rules.</p>
+          <a class="button" href="https://github.com/xyangzhou/WorldHarness">WorldHarness repository</a></div>
+        <figure class="panel harness-figure"><a href="assets/site/figures/WorldHarness.svg" aria-label="Open the full WorldHarness diagram"><img loading="lazy" src="assets/site/figures/WorldHarness.svg" width="284" height="362" alt="WorldHarness executes VLM commands and returns observations and feedback. The evaluator scores physical outcomes and terminal QA separately."></a></figure>
+      </div>
+    </section>
+
+    <section class="wrap section" id="evaluate">
+      <header class="section-head"><p class="eyebrow">Evaluation</p><h2>Evaluate your model</h2><p>Start with the task catalogue on CPU. For an R1 episode, use the OmniGibson simulator environment with the licensed BEHAVIOR assets.</p></header>
+      <div class="run-steps">
+        <article class="code-panel"><div><h3>Get the benchmark</h3><button type="button" data-copy="install">Copy</button></div>
+          <pre><code id="install">git clone https://github.com/xyangzhou/WorldLeague
+cd WorldLeague
+python -m pip install -e .
+git clone https://huggingface.co/datasets/xyangzhou/WorldLeague benchmark
+worldleague tasks</code></pre></article>
+        <article class="code-panel"><div><h3>Run a VLM episode</h3><button type="button" data-copy="episode">Copy</button></div>
+          <pre><code id="episode">worldleague eval T04 --config luna-medium \
+  --gpu 0 --output runs/luna/T04</code></pre>
+          <p>Install the sibling WorldHarness checkout and set the preset’s API key first. <a href="https://github.com/xyangzhou/WorldLeague#installation">Simulator setup</a></p></article>
+        <article class="code-panel"><div><h3>Read the profile</h3><button type="button" data-copy="profile">Copy</button></div>
+          <pre><code id="profile">worldleague profile runs/luna</code></pre>
+          <p>To connect a new model, robot or harness, follow the <a href="https://github.com/xyangzhou/WorldLeague/blob/main/docs/contributing.md">contribution guide</a>.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="cite">
+      <header class="section-head"><p class="eyebrow">Citation</p><h2>Cite WorldLeague</h2></header>
+      <article class="code-panel citation"><div><h3>BibTeX</h3><button type="button" data-copy="bibtex">Copy</button></div>
+        <pre><code id="bibtex">@misc{zhou2026worldleague,
+  title  = {{WorldLeague}: Benchmarking Physical Agency},
+  author = {Zhou, Xinyang and Li, Qi and Wang, Xinchao},
+  year   = {2026},
+  url    = {https://github.com/xyangzhou/WorldLeague}
+}</code></pre></article>
+    </section>
+  </main>
+  <footer class="wrap footer">
+    <div class="footer-contact"><a href="mailto:xinchao@nus.edu.sg">Correspondence</a><p>Project page adapted from <a href="https://lichenlillc.github.io/SO-Arena/">SO-Arena</a>.</p></div>
+    <div class="footer-brand"><a class="brand" href="#top">WorldLeague<img src="assets/site/figures/WebLogo.svg" width="24" height="24" alt=""></a><p>xML Lab · National University of Singapore</p></div>
+    <p class="music-credit">Music adapted from <a href="https://www.scottbuckley.com.au/library/tears-in-rain/">“Tears in Rain” by Scott Buckley</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+  </footer>
+  <dialog id="model-profile" aria-labelledby="profile-title">
+    <div class="dialog-head"><div><p class="eyebrow">Physical Agency Profile</p><h2 id="profile-title"></h2></div><button id="close-dialog" type="button" aria-label="Close model profile">Close</button></div>
+    <p id="profile-summary"></p>
+    <table><thead><tr><th>Capability</th><th class="numeric">Score</th><th class="numeric">Success</th></tr></thead><tbody id="profile-body"></tbody></table>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,5 @@
+base_url: https://ai-gateway.vercel.sh/v1
+model: openai/gpt-6.1-sol
+api_key_env: AI_GATEWAY_API_KEY
+reasoning_effort: medium
+timeout_s: 1800
