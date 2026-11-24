@@ -10,13 +10,13 @@
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT-4E94CE.svg">
   </a>
   <a href="https://arxiv.org/abs/2611.30989">
-    <img src="https://img.shields.io/badge/arXiv-2611.30989-B31B1B.svg" alt="WorldLeague paper on arXiv">
+    <img src="assets/badges/arxiv.svg" alt="WorldLeague paper on arXiv">
   </a>
   <a href="https://github.com/xyangzhou/WorldHarness">
     <img src="https://img.shields.io/badge/WorldHarness-Interfaces-28736D.svg" alt="WorldHarness interfaces">
   </a>
   <a href="https://xyangzhou.github.io/WorldLeague/#leaderboard">
-    <img src="https://img.shields.io/badge/Leaderboard-View_results-6F42C1.svg" alt="View the WorldLeague leaderboard">
+    <img src="assets/badges/leaderboard.svg" alt="View the WorldLeague leaderboard">
   </a>
   <a href="https://huggingface.co/datasets/xyangzhou/WorldLeague">
     <img src="https://img.shields.io/badge/HuggingFace-Dataset-FFB000.svg" alt="Hugging Face dataset">
