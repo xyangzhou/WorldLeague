@@ -9,11 +9,15 @@
   <a href="LICENSE">
     <img alt="MIT License" src="https://img.shields.io/badge/License-MIT-4E94CE.svg">
   </a>
-  <img src="https://img.shields.io/badge/arXiv-link_pending-lightgrey.svg" alt="arXiv link pending">
+  <a href="https://arxiv.org/abs/2611.30989">
+    <img src="https://img.shields.io/badge/arXiv-2611.30989-B31B1B.svg" alt="WorldLeague paper on arXiv">
+  </a>
   <a href="https://github.com/xyangzhou/WorldHarness">
     <img src="https://img.shields.io/badge/WorldHarness-Interfaces-28736D.svg" alt="WorldHarness interfaces">
   </a>
-  <img src="https://img.shields.io/badge/Leaderboard-link_pending-lightgrey.svg" alt="Leaderboard link pending">
+  <a href="https://xyangzhou.github.io/WorldLeague/#leaderboard">
+    <img src="https://img.shields.io/badge/Leaderboard-View_results-28736D.svg" alt="View the WorldLeague leaderboard">
+  </a>
   <a href="https://huggingface.co/datasets/xyangzhou/WorldLeague">
     <img src="https://img.shields.io/badge/HuggingFace-Dataset-FFB000.svg" alt="Hugging Face dataset">
   </a>
@@ -270,13 +274,16 @@ The [evaluation code](LICENSE) and [WorldLeague-authored benchmark materials](ht
 
 ## 📚 Citation
 
-If you use the WorldLeague benchmark or WorldHarness, please cite the paper.
+If you use the WorldLeague benchmark or WorldHarness, please cite [our paper](https://arxiv.org/abs/2611.30989).
 
 ```bibtex
 @misc{zhou2026worldleague,
-  title  = {{WorldLeague}: Benchmarking Physical Agency},
-  author = {Zhou, Xinyang and Li, Qi and Wang, Xinchao},
-  year   = {2026},
-  url    = {https://github.com/xyangzhou/WorldLeague}
+  title         = {{WorldLeague}: Benchmarking Physical Agency},
+  author        = {Zhou, Xinyang and Li, Qi and Wang, Xinchao},
+  year          = {2026},
+  eprint        = {2611.30989},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url           = {https://arxiv.org/abs/2611.30989}
 }
 ```
